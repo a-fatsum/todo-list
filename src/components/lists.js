@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 //
 // Import components
 //
 import Todo from "./todo";
 
 // ===========================================================================
-function Lists({ text, setTodosInputText, todosInputText, todos, setTodos }) {
+function Lists({ text }) {
+  // useStates
+  // input text for the list_todos
+  const [todosInputText, setTodosInputText] = useState("");
+  // todos items
+  const [todos, setTodos] = useState([]);
+  //
+  // ====================================================================
   //
   const inputTextHandler = (e) => {
     console.log(e.target.value);

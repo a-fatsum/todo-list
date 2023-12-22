@@ -4,29 +4,19 @@ import React from "react";
 import Lists from "./lists";
 //
 
-function TodoList({
-  todosList,
-  todosInputText,
-  setTodosInputText,
-  todos,
-  setTodos,
-}) {
+function TodoLists({ todosList }) {
+  //
+
+  // ================================
   return (
     <div className="todo-container">
       <ul className="todo-list">
         {todosList.map((todo) => (
-          <Lists
-            text={todo.text}
-            key={todo.id}
-            todosInputText={todosInputText}
-            setTodosInputText={setTodosInputText}
-            todos={todos}
-            setTodos={setTodos}
-          ></Lists>
+          <Lists text={todo.text} key={todo.id}></Lists>
         ))}
       </ul>
     </div>
   );
 }
 
-export default TodoList;
+export default TodoLists;
