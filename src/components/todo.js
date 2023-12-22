@@ -8,14 +8,15 @@ import React from "react";
 //
 
 function Todo({ text, todo, setTodos, todos }) {
-  // Events
+  // Functions and events
+  //   deleteHandler() filters through the [todos] array and only keeps the items with the id that dooesn't match the selected todo item
   const deleteHandler = () => {
     setTodos(todos.filter((el) => el.id !== todo.id));
     //
   };
 
-  // ===========
-  //
+  // =======================
+  // completeHandler() maps through the [todos] array and flips the "completed" status over
   const completeHandler = () => {
     setTodos(
       todos.map((item) => {

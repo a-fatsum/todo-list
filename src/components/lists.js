@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //
 // Import components
 //
@@ -11,8 +11,42 @@ function Lists({ text }) {
   const [todosInputText, setTodosInputText] = useState("");
   // todos items
   const [todos, setTodos] = useState([]);
-  //
+  //===================================
+  // Use 2 hooks.. first one [status, setStatus] is to store all of our todos
+  const [status, setStatus] = useState("all");
+  // Second hook [filteredTodos, SetFilteredTodos] is to store the filtered items based on their status being "complete" or "uncomplete"
+  const [filteredTodos, setFilteredTodos] = useState([]);
+
   // ====================================================================
+  // useEffect
+  // useEffect to run the function filterHandler() everytime we modify the status or make a todo entery
+  useEffect(() => {
+    filterHandler();
+  }, [todos, status]);
+  //
+  //  =======================================
+  // Functions and events
+
+  // filterHandler()  to filter out the "completed" and "uncompleted" items
+  const filterHandler = () => {
+    switch (status) {
+      case "completed":
+        setFilteredTodos(todos.filter((todo) => todo.completed === true));
+        break;
+      case "uncompleted":
+        setFilteredTodos(todos.filter((todo) => todo.completed === false));
+        break;
+      default:
+        setFilteredTodos(todos);
+        break;
+    }
+  };
+
+  // statusHandler() to set the status of items "complete" or "incomplete"
+  const statusHandler = (e) => {
+    // console.log(e.target.value);
+    setStatus(e.target.value);
+  };
   //
   const inputTextHandler = (e) => {
     console.log(e.target.value);
@@ -29,6 +63,7 @@ function Lists({ text }) {
     setTodosInputText("");
   };
   //
+
   //
   return (
     <div className="todo-container">
@@ -50,7 +85,8 @@ function Lists({ text }) {
           <i className="fas fa-plus-square"></i>
         </button>
         <div className="select">
-          <select className="filter-todo">
+          {/* call statusHandler() function on change */}
+          <select onChange={statusHandler} name="todos" className="filter-todo">
             <option value="all">All</option>
             <option value="completed">Completed</option>
             <option value="uncompleted">Uncompleted</option>
@@ -58,10 +94,11 @@ function Lists({ text }) {
         </div>
       </form>
       {/* ============================================================ */}
+      {/* ============================================================ */}
 
       <div className="todo-container">
         <ul className="todo-list">
-          {todos.map((todo) => (
+          {filteredTodos.map((todo) => (
             <Todo
               todo={todo}
               todos={todos}

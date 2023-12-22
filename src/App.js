@@ -7,6 +7,9 @@ import TodoLists from "./components/todoLists";
 //
 
 function App() {
+  //
+
+  // ======================================
   // input text for the lists titles
   const [inputText, setInputText] = useState("");
   //
@@ -14,6 +17,7 @@ function App() {
   //
   // // ===============================================
 
+  //
   return (
     <div className="App">
       <header>

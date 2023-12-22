@@ -11,8 +11,11 @@ import React from "react";
 
 function Form({ setInputText, setTodosList, todosList, inputText }) {
   //
+  //
+
+  // ===================
   function inputTextHandler(e) {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setInputText(e.target.value);
   }
   //
