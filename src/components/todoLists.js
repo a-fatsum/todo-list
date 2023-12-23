@@ -4,7 +4,7 @@ import React from "react";
 import Lists from "./lists";
 //
 
-function TodoLists({ todosList, setStatus }) {
+function TodoLists({ todosList, setTodosList }) {
   //
   //
 
@@ -12,8 +12,14 @@ function TodoLists({ todosList, setStatus }) {
   return (
     <div className="todo-container">
       <ul className="todo-list">
-        {todosList.map((todo) => (
-          <Lists setStatus={setStatus} text={todo.text} key={todo.id}></Lists>
+        {todosList.map((listOfTodos) => (
+          <Lists
+            text={listOfTodos.text}
+            key={listOfTodos.id}
+            todosList={todosList}
+            setTodosList={setTodosList}
+            listOfTodos={listOfTodos}
+          ></Lists>
         ))}
       </ul>
     </div>

@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import Todo from "./todo";
 
 // ===========================================================================
-function Lists({ text }) {
+function Lists({ text, listOfTodos, setTodosList, todosList }) {
   // useStates
   // input text for the list_todos
   const [todosInputText, setTodosInputText] = useState("");
@@ -16,17 +16,14 @@ function Lists({ text }) {
   const [status, setStatus] = useState("all");
   // Second hook [filteredTodos, SetFilteredTodos] is to store the filtered items based on their status being "complete" or "uncomplete"
   const [filteredTodos, setFilteredTodos] = useState([]);
-
   // ====================================================================
   // useEffect
   // useEffect to run the function filterHandler() everytime we modify the status or make a todo entery
   useEffect(() => {
     filterHandler();
   }, [todos, status]);
-  //
   //  =======================================
   // Functions and events
-
   // filterHandler()  to filter out the "completed" and "uncompleted" items
   const filterHandler = () => {
     switch (status) {
@@ -41,7 +38,6 @@ function Lists({ text }) {
         break;
     }
   };
-
   // statusHandler() to set the status of items "complete" or "incomplete"
   const statusHandler = (e) => {
     // console.log(e.target.value);
@@ -63,8 +59,14 @@ function Lists({ text }) {
     setTodosInputText("");
   };
   //
+  //   deleteHandler() filters through the [todosList] array and only keeps the items with the id that dooesn't match the selected todo item
+  const deleteHandler = (e) => {
+    e.preventDefault();
+    setTodosList(todosList.filter((el) => el.id !== listOfTodos.id));
 
-  //
+    //
+  };
+  // =======================================================
   return (
     <div className="todo-container">
       <header>
@@ -92,6 +94,10 @@ function Lists({ text }) {
             <option value="uncompleted">Uncompleted</option>
           </select>
         </div>
+        <button onClick={deleteHandler}>
+          {" "}
+          <i className="fas fa-trash"></i>
+        </button>
       </form>
       {/* ============================================================ */}
       {/* ============================================================ */}
