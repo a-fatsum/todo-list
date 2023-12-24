@@ -152,9 +152,9 @@ select {
   color: #ff6f47;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
-  /* width: 12rem; */
+  width: 10rem;
   /*  */
-  width: auto;
+  /* width: auto; */
 }
 
 /* Arrow */
@@ -204,6 +204,6 @@ select {
 /* ************* */
 
 .todo-input {
-  max-width: 20rem;
+  max-width: 17.2rem;
   font-size: 2rem;
 }
