@@ -45,17 +45,22 @@ function Lists({ text, listOfTodos, setTodosList, todosList }) {
   };
   //
   const inputTextHandler = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setTodosInputText(e.target.value);
   };
   //
   //
   const submitTodoHandler = (e) => {
     e.preventDefault();
-    setTodos([
-      ...todos,
-      { text: todosInputText, completed: false, id: Math.random() * 1000 },
-    ]);
+    //   prevent empty inputs from the user
+    if (todosInputText) {
+      setTodos([
+        ...todos,
+        { text: todosInputText, completed: false, id: Math.random() * 1000 },
+      ]);
+      //   console.log(todosInputText);
+    }
+
     setTodosInputText("");
   };
   //

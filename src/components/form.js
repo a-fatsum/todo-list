@@ -15,15 +15,21 @@ function Form({ setInputText, setTodosList, todosList, inputText }) {
 
   // ===================
   function inputTextHandler(e) {
-    // console.log(e.target.value);
+    // console.log(inputText);
     setInputText(e.target.value);
   }
   //
   const submitTodoHandler = (e) => {
     e.preventDefault();
-
-    setTodosList([...todosList, { text: inputText, id: Math.random() * 1000 }]);
-    setInputText("");
+    // console.log(inputText);
+    // Prevent empty inputs
+    if (inputText) {
+      setTodosList([
+        ...todosList,
+        { text: inputText, id: Math.random() * 1000 },
+      ]);
+      setInputText("");
+    }
   };
   //
   //
