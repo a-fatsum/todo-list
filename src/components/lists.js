@@ -67,7 +67,10 @@ function Lists({ text, listOfTodos, setTodosList, todosList }) {
   //   deleteHandler() filters through the [todosList] array and only keeps the items with the id that dooesn't match the selected todo item
   const deleteHandler = (e) => {
     e.preventDefault();
-    setTodosList(todosList.filter((el) => el.id !== listOfTodos.id));
+    //    confirming with the user before deleting a listOfTodos
+    if (window.confirm("Are you sure you want to delete this list?")) {
+      setTodosList(todosList.filter((el) => el.id !== listOfTodos.id));
+    }
 
     //
   };
