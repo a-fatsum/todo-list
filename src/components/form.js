@@ -38,6 +38,7 @@ function Form({ setInputText, setTodosList, todosList, inputText }) {
     <div>
       <form>
         <input
+          placeholder="List name"
           value={inputText}
           onChange={inputTextHandler}
           type="text"

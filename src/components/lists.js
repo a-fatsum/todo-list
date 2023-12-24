@@ -76,10 +76,10 @@ function Lists({ text, listOfTodos, setTodosList, todosList }) {
   };
   // =======================================================
   return (
-    <div className="todo-container">
-      <header>
-        <h5>{text}</h5>
-      </header>
+    <div className="todo-container x">
+      <div className="list-name">
+        <h3>{text}</h3>
+      </div>
       <form>
         <input
           value={todosInputText}
