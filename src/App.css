@@ -188,6 +188,7 @@ select {
   width: fit-content;
   padding: 1rem;
   border-radius: 5px;
+  background-color: red;
 }
 
 .list-name {
@@ -206,4 +207,8 @@ select {
 .todo-input {
   max-width: 17.2rem;
   font-size: 2rem;
+}
+.z {
+  margin-top: -10px;
+  margin-bottom: -10px;
 }

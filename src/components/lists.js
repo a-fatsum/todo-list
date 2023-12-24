@@ -80,7 +80,7 @@ function Lists({ text, listOfTodos, setTodosList, todosList }) {
       <div className="list-name">
         <h3>{text}</h3>
       </div>
-      <form>
+      <form className="z">
         <input
           value={todosInputText}
           onChange={inputTextHandler}
