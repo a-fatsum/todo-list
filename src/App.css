@@ -13,6 +13,11 @@ body {
 
 header {
   font-size: 2rem;
+  /*  */
+  /* position: absolute; */
+  /* margin: auto; */
+
+  /*  */
 }
 
 header,
@@ -47,11 +52,27 @@ form button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  /*  */
+  flex-direction: column;
+  background-color: tomato;
+  width: fit-content;
+  margin: auto;
+  height: 20rem;
+  margin-top: 50px;
+  /*  */
 }
 
 .todo-list {
   min-width: 30%;
   list-style: none;
+  /*  */
+  background-color: olive;
+  display: flex;
+  flex-direction: column;
+  /* gap: 3rem; */
+  margin: auto;
+  width: 50rem;
+  /*  */
 }
 
 .todo {
@@ -84,7 +105,7 @@ form button:hover {
 }
 
 .complete-btn {
-  background: rgb(11, 212, 162);
+  background: rgb(81, 156, 121);
 }
 
 .todo-item {
@@ -129,7 +150,9 @@ select {
   color: #ff6f47;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
-  width: 12rem;
+  /* width: 12rem; */
+  /*  */
+  width: auto;
 }
 
 /* Arrow */
@@ -145,49 +168,9 @@ select {
 }
 
 /* Transition */
-/*
-.select:hover::after {
+
+/* .select:hover::after {
   transform: scale(1.5);
-}
-*/
+} */
+
 /* ****************************************************************************************** */
-.lists {
-  background: olive;
-  position: absolute;
-  left: 0;
-  padding: 1rem;
-  height: 500px;
-  /* width: 400px; */
-}
-
-.lists-input {
-  position: absolute;
-  top: 18%;
-  left: 880px;
-  width: 12rem;
-
-  padding: 0.5rem;
-  font-size: 2rem;
-  border: none;
-  background: white;
-}
-
-.add-list {
-  /* position: relative; */
-  position: absolute;
-  top: 18%;
-  left: 1072px;
-
-  padding: 0.5rem;
-  font-size: 2rem;
-  border: none;
-  background: white;
-  color: #ff6f47;
-  background: #f7fffe;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.add-list:hover {
-  background: #ff6f47;
-  color: white;
-}
