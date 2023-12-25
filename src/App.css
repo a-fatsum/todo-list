@@ -72,7 +72,9 @@ form button:hover {
   flex-direction: column;
   /* gap: 3rem; */
   margin: auto;
-  min-width: 36.3rem;
+  min-width: 35.5rem;
+  transition: ease-in-out 0.5s;
+
   /*  */
 }
 
@@ -212,8 +214,8 @@ select {
   font-size: 2rem;
 }
 .z {
-  margin-top: -6rem;
-  margin-bottom: -5rem;
+  /* margin-top: -6rem; */
+  /* margin-bottom: -5rem; */
 }
 
 .fa-sort-down,
@@ -230,4 +232,9 @@ select {
   /* width: 4rem; */
   /* height: 4rem; */
   z-index: 1;
+}
+
+.hide {
+  display: none;
+  transition: ease-in-out 0.5s;
 }

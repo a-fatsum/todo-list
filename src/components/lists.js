@@ -19,9 +19,9 @@ function Lists({ text, listOfTodos, setTodosList, todosList, index }) {
   const [filteredTodos, setFilteredTodos] = useState([]);
   // ==================================
   // Open and collapse todo items ("todo-list-items")
-  const [open, setOpen] = useState();
-  console.log(index);
+  const [selected, setSelected] = useState(null);
   //
+  // console.log(selected);
 
   // ====================================================================
   // useEffect
@@ -47,7 +47,6 @@ function Lists({ text, listOfTodos, setTodosList, todosList, index }) {
   };
   // statusHandler() to set the status of items "complete" or "incomplete"
   const statusHandler = (e) => {
-    // console.log(e.target.value);
     setStatus(e.target.value);
   };
   //
@@ -64,7 +63,6 @@ function Lists({ text, listOfTodos, setTodosList, todosList, index }) {
         ...todos,
         { text: todosInputText, completed: false, id: Math.random() * 1000 },
       ]);
-      //   console.log(todosInputText);
     }
     setTodosInputText("");
   };
@@ -76,7 +74,17 @@ function Lists({ text, listOfTodos, setTodosList, todosList, index }) {
     if (window.confirm("Are you sure you want to delete this list?")) {
       setTodosList(todosList.filter((el) => el.id !== listOfTodos.id));
     }
-    //
+  };
+  // =====
+  // toggleExpand function to open and close each todo-list
+  const toggle = (index) => {
+    if (selected === index) {
+      return setSelected(null);
+    } else {
+      setSelected(index);
+    }
+    console.log(selected);
+    console.log(index);
   };
   // =======================================================
   return (
@@ -87,18 +95,11 @@ function Lists({ text, listOfTodos, setTodosList, todosList, index }) {
       <div className="list-heading">
         <h3>{text}</h3>
 
-        <button
-          className="open-collaps-button"
-          onClick={(e) => {
-            e.preventDefault();
-            setOpen(open === index ? 1 : index);
-          }}
-        >
-          {open === index ? (
-            <i className="fa fa-sort-up"></i>
-          ) : (
-            <i className="fa fa-sort-down"></i>
-          )}
+        <button onClick={() => toggle(index)} className="open-collaps-button">
+          <i
+            className={selected === index ? "fa fa-sort-up" : "fa fa-sort-down"}
+          ></i>
+          {/* <i className="fa fa-sort-down"></i> */}
         </button>
       </div>
 
@@ -132,7 +133,8 @@ function Lists({ text, listOfTodos, setTodosList, todosList, index }) {
       </form>
       {/* ============================================================ */}
       <div>
-        <ul className="todo-list-items">
+        {/* toggle class "hide" to hide and expand the todo-list-items */}
+        <ul className={selected === index ? "todo-list-items" : "hide"}>
           {filteredTodos.map((todo) => (
             <Todo
               todo={todo}
