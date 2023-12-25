@@ -31,14 +31,16 @@ form {
 }
 
 form input,
-form button {
+form button,
+.open-collaps-button {
   padding: 0.5rem;
   font-size: 2rem;
   border: none;
   background: white;
 }
 
-form button {
+form button,
+.open-collaps-button {
   color: #ff6f47;
   background: #f7fffe;
   cursor: pointer;
@@ -55,16 +57,13 @@ form button:hover {
   justify-content: center;
   align-items: center;
   /*  */
-  /* flex-direction: column;
-  background-color: tomato;
+  /* background-color: tomato; */
   width: fit-content;
   margin: auto;
-  height: 20rem;
-  margin-top: 50px; */
   /*  */
 }
 
-.todo-list {
+.todo-list-items {
   min-width: 30%;
   list-style: none;
   /*  */
@@ -188,11 +187,15 @@ select {
   width: fit-content;
   padding: 1rem;
   border-radius: 5px;
-  background-color: red;
 }
 
-.list-name {
+.list-heading {
   font-size: 2rem;
+  display: inline-flex;
+  gap: 2rem;
+  /* background-color: olive; */
+  min-height: fit-content;
+  /* height: 9rem; */
 }
 /* ********* */
 .y {
@@ -209,6 +212,22 @@ select {
   font-size: 2rem;
 }
 .z {
-  margin-top: -10px;
-  margin-bottom: -10px;
+  margin-top: -6rem;
+  margin-bottom: -5rem;
+}
+
+.fa-sort-down,
+.fa-sort-up {
+  color: #ff6f47;
+  font-size: 2rem;
+}
+
+.open-collaps-button {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  /* width: 4rem; */
+  /* height: 4rem; */
+  z-index: 1;
 }

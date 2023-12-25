@@ -3,10 +3,11 @@ import React, { useState, useEffect } from "react";
 // Import components
 //
 import Todo from "./todo";
+//
 
 // ===========================================================================
-function Lists({ text, listOfTodos, setTodosList, todosList }) {
-  // useStates
+function Lists({ text, listOfTodos, setTodosList, todosList, index }) {
+  // useState
   // input text for the list_todos
   const [todosInputText, setTodosInputText] = useState("");
   // todos items
@@ -16,6 +17,12 @@ function Lists({ text, listOfTodos, setTodosList, todosList }) {
   const [status, setStatus] = useState("all");
   // Second hook [filteredTodos, SetFilteredTodos] is to store the filtered items based on their status being "complete" or "uncomplete"
   const [filteredTodos, setFilteredTodos] = useState([]);
+  // ==================================
+  // Open and collapse todo items ("todo-list-items")
+  const [open, setOpen] = useState();
+  console.log(index);
+  //
+
   // ====================================================================
   // useEffect
   // useEffect to run the function filterHandler() everytime we modify the status or make a todo entery
@@ -49,7 +56,6 @@ function Lists({ text, listOfTodos, setTodosList, todosList }) {
     setTodosInputText(e.target.value);
   };
   //
-  //
   const submitTodoHandler = (e) => {
     e.preventDefault();
     //   prevent empty inputs from the user
@@ -60,7 +66,6 @@ function Lists({ text, listOfTodos, setTodosList, todosList }) {
       ]);
       //   console.log(todosInputText);
     }
-
     setTodosInputText("");
   };
   //
@@ -71,15 +76,33 @@ function Lists({ text, listOfTodos, setTodosList, todosList }) {
     if (window.confirm("Are you sure you want to delete this list?")) {
       setTodosList(todosList.filter((el) => el.id !== listOfTodos.id));
     }
-
     //
   };
   // =======================================================
   return (
     <div className="todo-container x">
-      <div className="list-name">
+      {/* ******************************************** */}
+      {/* List heading and collapse button */}
+
+      <div className="list-heading">
         <h3>{text}</h3>
+
+        <button
+          className="open-collaps-button"
+          onClick={(e) => {
+            e.preventDefault();
+            setOpen(open === index ? 1 : index);
+          }}
+        >
+          {open === index ? (
+            <i className="fa fa-sort-up"></i>
+          ) : (
+            <i className="fa fa-sort-down"></i>
+          )}
+        </button>
       </div>
+
+      {/* ===================================== */}
       <form className="z">
         <input
           value={todosInputText}
@@ -108,10 +131,8 @@ function Lists({ text, listOfTodos, setTodosList, todosList }) {
         </button>
       </form>
       {/* ============================================================ */}
-      {/* ============================================================ */}
-
-      <div className="todo-container">
-        <ul className="todo-list">
+      <div>
+        <ul className="todo-list-items">
           {filteredTodos.map((todo) => (
             <Todo
               todo={todo}

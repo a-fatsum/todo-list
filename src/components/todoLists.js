@@ -11,14 +11,16 @@ function TodoLists({ todosList, setTodosList }) {
   // ================================
   return (
     <div className="todo-container">
-      <ul className="todo-list y">
-        {todosList.map((listOfTodos) => (
+      <ul className=" y">
+        {/* Pass in the index to use for opena and collapse the todo items  */}
+        {todosList.map((listOfTodos, index) => (
           <Lists
             text={listOfTodos.text}
             key={listOfTodos.id}
             todosList={todosList}
             setTodosList={setTodosList}
             listOfTodos={listOfTodos}
+            index={index}
           ></Lists>
         ))}
       </ul>
