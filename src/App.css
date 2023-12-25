@@ -64,7 +64,7 @@ form button:hover {
 }
 
 .todo-list-items {
-  min-width: 30%;
+  /* min-width: 30%; */
   list-style: none;
   /*  */
   /* background-color: olive; */
@@ -72,8 +72,8 @@ form button:hover {
   flex-direction: column;
   /* gap: 3rem; */
   margin: auto;
-  min-width: 35.5rem;
-  transition: ease-in-out 0.5s;
+  min-width: 34.5rem;
+  /* transition: ease-in-out 0.5s; */
 
   /*  */
 }
@@ -191,6 +191,11 @@ select {
   border-radius: 5px;
 }
 
+.z {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .list-heading {
   font-size: 2rem;
   display: inline-flex;
@@ -198,24 +203,34 @@ select {
   /* background-color: olive; */
   min-height: fit-content;
   /* height: 9rem; */
+  position: absolute;
+  /* left: 40%; */
+  margin: auto;
 }
-/* ********* */
+
+.list-heading h5,
+.list-heading button {
+  /* background-color: tomato; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ************** */
 .y {
   /* background-color: yellowgreen; */
   display: flex;
   flex-direction: column;
   gap: 2rem;
   align-items: center;
+  justify-content: center;
+  /* padding-left: 50%; */
 }
 /* ************* */
 
 .todo-input {
   max-width: 17.2rem;
   font-size: 2rem;
-}
-.z {
-  /* margin-top: -6rem; */
-  /* margin-bottom: -5rem; */
 }
 
 .fa-sort-down,

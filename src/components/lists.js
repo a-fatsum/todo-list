@@ -6,7 +6,14 @@ import Todo from "./todo";
 //
 
 // ===========================================================================
-function Lists({ text, listOfTodos, setTodosList, todosList, index }) {
+function Lists({
+  // text,
+  listOfTodos,
+  setTodosList,
+  todosList,
+  index,
+  selected,
+}) {
   // useState
   // input text for the list_todos
   const [todosInputText, setTodosInputText] = useState("");
@@ -19,7 +26,7 @@ function Lists({ text, listOfTodos, setTodosList, todosList, index }) {
   const [filteredTodos, setFilteredTodos] = useState([]);
   // ==================================
   // Open and collapse todo items ("todo-list-items")
-  const [selected, setSelected] = useState(null);
+  // const [selected, setSelected] = useState(null);
   //
   // console.log(selected);
 
@@ -77,21 +84,21 @@ function Lists({ text, listOfTodos, setTodosList, todosList, index }) {
   };
   // =====
   // toggleExpand function to open and close each todo-list
-  const toggle = (index) => {
-    if (selected === index) {
-      return setSelected(null);
-    } else {
-      setSelected(index);
-    }
-    console.log(selected);
-    console.log(index);
-  };
+  // const toggle = (index) => {
+  //   if (selected === index) {
+  //     return setSelected(null);
+  //   } else {
+  //     setSelected(index);
+  //   }
+  //   console.log(selected);
+  //   console.log(index);
+  // };
   // =======================================================
   return (
     <div className="todo-container x">
-      {/* ******************************************** */}
+      {/* ========================================= */}
       {/* List heading and collapse button */}
-
+      {/* 
       <div className="list-heading">
         <h3>{text}</h3>
 
@@ -99,12 +106,11 @@ function Lists({ text, listOfTodos, setTodosList, todosList, index }) {
           <i
             className={selected === index ? "fa fa-sort-up" : "fa fa-sort-down"}
           ></i>
-          {/* <i className="fa fa-sort-down"></i> */}
         </button>
-      </div>
+      </div> */}
 
       {/* ===================================== */}
-      <form className="z">
+      <form>
         <input
           value={todosInputText}
           onChange={inputTextHandler}
