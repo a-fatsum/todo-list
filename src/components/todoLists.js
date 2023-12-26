@@ -15,12 +15,14 @@ function TodoLists({ todosList, setTodosList }) {
   // toggleExpand function to open and close each todo-list
   const toggle = (index) => {
     if (selected === index) {
+      console.log(selected);
+      console.log(index);
       return setSelected(null);
     } else {
       setSelected(index);
+      console.log(selected);
+      console.log(index);
     }
-    console.log(selected);
-    console.log(index);
   };
 
   // ================================
@@ -53,6 +55,7 @@ function TodoLists({ todosList, setTodosList }) {
               setTodosList={setTodosList}
               listOfTodos={listOfTodos}
               index={index}
+              setSelected={setSelected}
             ></Lists>
           </div>
         ))}

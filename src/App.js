@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>What's on the list?</h1>
+        <h2>What's on the list?</h2>
       </header>
       <Form
         inputText={inputText}

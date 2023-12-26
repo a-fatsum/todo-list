@@ -26,7 +26,7 @@ function Lists({
   const [filteredTodos, setFilteredTodos] = useState([]);
   // ==================================
   //
-  // const [calss, setClass] = useState(null);
+  // const [calss, setClass] = useState("hide");
   //
 
   // ====================================================================
@@ -81,50 +81,46 @@ function Lists({
       setTodosList(todosList.filter((el) => el.id !== listOfTodos.id));
     }
   };
-  // =====
-  const ref = useRef();
-  // // toggleExpand function to open and close each todo-list
-  const ul = ref.current; // corresponding DOM node
-  const toggle = () => {
-    if (selected === index) {
-      ul.className = "hide";
-      // return setClass(null);
-    } else if (selected !== index) {
-      ul.className = "todo-list-items";
-      // setClass(index);
-    }
-    console.log(selected);
-    console.log(index);
+  // ======================================================
+  // const ref = useRef();
+  // // // toggleExpand function to open and close each todo-list
+  // const ul = ref.current; // corresponding DOM node
+  // const toggle = () => {
+  //   if (selected === index) {
+  //     ul.className = "todo-list-items";
 
-    // className={selected === index ? "todo-list-items" : "hide"}
-  };
-  // console.log(ulRef.current.className);
+  //     //
+  //     console.log(selected);
+  //     console.log(index);
+  //     console.log(ul.className);
+  //     // return ul.className;
+  //   } else if (selected !== index) {
+  //     ul.className = "hide";
+
+  //     // set selected to equal index somehow .............
+  //     console.log(selected);
+  //     console.log(index);
+  //     console.log(ul.className);
+  //     // return ul.className;
+  //   }
+  //   console.log(selected);
+  //   console.log(index);
+  //   console.log(ul.className);
+  //   // return ul.className;
+  //   // className={selected === index ? "todo-list-items" : "hide"}
+  // };
 
   // =======================================================
   return (
     <div className="todo-container x">
-      {/* ========================================= */}
-      {/* List heading and collapse button */}
-      {/* 
-      <div className="list-heading">
-        <h3>{text}</h3>
-
-        <button onClick={() => toggle(index)} className="open-collaps-button">
-          <i
-            className={selected === index ? "fa fa-sort-up" : "fa fa-sort-down"}
-          ></i>
-        </button>
-      </div> */}
-
-      {/* ===================================== */}
       <form>
         <input
           value={todosInputText}
-          // onChange={inputTextHandler}
-          onChange={(e) => {
-            inputTextHandler(e);
-            toggle();
-          }}
+          onChange={inputTextHandler}
+          // onChange={(e) => {
+          //   inputTextHandler(e);
+          //   toggle();
+          // }}
           type="text"
           className="todo-input"
         />
@@ -152,8 +148,8 @@ function Lists({
       <div>
         {/* toggle class "hide" to hide and expand the todo-list-items */}
         <ul
-          ref={ref}
-          // className={selected === index ? "todo-list-items" : "hide"}
+          // ref={ref}
+          className={selected === index ? "todo-list-items" : "hide"}
         >
           {filteredTodos.map((todo) => (
             <Todo
