@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 //
 // Import components
 //
@@ -25,10 +25,9 @@ function Lists({
   // Second hook [filteredTodos, SetFilteredTodos] is to store the filtered items based on their status being "complete" or "uncomplete"
   const [filteredTodos, setFilteredTodos] = useState([]);
   // ==================================
-  // Open and collapse todo items ("todo-list-items")
-  // const [selected, setSelected] = useState(null);
   //
-  // console.log(selected);
+  // const [calss, setClass] = useState(null);
+  //
 
   // ====================================================================
   // useEffect
@@ -83,16 +82,24 @@ function Lists({
     }
   };
   // =====
-  // toggleExpand function to open and close each todo-list
-  // const toggle = (index) => {
-  //   if (selected === index) {
-  //     return setSelected(null);
-  //   } else {
-  //     setSelected(index);
-  //   }
-  //   console.log(selected);
-  //   console.log(index);
-  // };
+  const ref = useRef();
+  // // toggleExpand function to open and close each todo-list
+  const ul = ref.current; // corresponding DOM node
+  const toggle = () => {
+    if (selected === index) {
+      ul.className = "hide";
+      // return setClass(null);
+    } else if (selected !== index) {
+      ul.className = "todo-list-items";
+      // setClass(index);
+    }
+    console.log(selected);
+    console.log(index);
+
+    // className={selected === index ? "todo-list-items" : "hide"}
+  };
+  // console.log(ulRef.current.className);
+
   // =======================================================
   return (
     <div className="todo-container x">
@@ -113,7 +120,11 @@ function Lists({
       <form>
         <input
           value={todosInputText}
-          onChange={inputTextHandler}
+          // onChange={inputTextHandler}
+          onChange={(e) => {
+            inputTextHandler(e);
+            toggle();
+          }}
           type="text"
           className="todo-input"
         />
@@ -140,7 +151,10 @@ function Lists({
       {/* ============================================================ */}
       <div>
         {/* toggle class "hide" to hide and expand the todo-list-items */}
-        <ul className={selected === index ? "todo-list-items" : "hide"}>
+        <ul
+          ref={ref}
+          // className={selected === index ? "todo-list-items" : "hide"}
+        >
           {filteredTodos.map((todo) => (
             <Todo
               todo={todo}
@@ -149,7 +163,7 @@ function Lists({
               text={todo.text}
               key={todo.id}
             >
-              {" "}
+              {"  "}
             </Todo>
           ))}
         </ul>

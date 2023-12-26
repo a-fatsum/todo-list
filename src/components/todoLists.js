@@ -29,7 +29,8 @@ function TodoLists({ todosList, setTodosList }) {
       <ul className=" y">
         {/* Pass in the index to use for opena and collapse the todo items  */}
         {todosList.map((listOfTodos, index) => (
-          <div className="z">
+          // // // key property below is temporary ->->->-> ?????????????????? change later to a proper key property
+          <div className="z" key={listOfTodos.id}>
             <div className="list-heading">
               <h5>{listOfTodos.text}</h5>
               <button
