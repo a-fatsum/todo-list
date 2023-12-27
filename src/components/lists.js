@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, createRef } from "react";
 //
 // Import components
 //
@@ -12,7 +12,7 @@ function Lists({
   setTodosList,
   todosList,
   index,
-  selected,
+  // selected,
 }) {
   // useState
   // input text for the list_todos
@@ -25,10 +25,11 @@ function Lists({
   // Second hook [filteredTodos, SetFilteredTodos] is to store the filtered items based on their status being "complete" or "uncomplete"
   const [filteredTodos, setFilteredTodos] = useState([]);
   // ==================================
-  //
-  // const [calss, setClass] = useState("hide");
-  //
-
+  // ========================================================
+  //  Hooks to use for the toggle()
+  const [selected, setSelected] = useState(null);
+  // console.log(selected);
+  // ====================================================================
   // ====================================================================
   // useEffect
   // useEffect to run the function filterHandler() everytime we modify the status or make a todo entery
@@ -81,6 +82,25 @@ function Lists({
       setTodosList(todosList.filter((el) => el.id !== listOfTodos.id));
     }
   };
+
+  // Functions and events
+  // toggleExpand function to open and close each todo-list
+  //
+  const toggle = (index) => {
+    if (selected === index) {
+      console.log(selected);
+      console.log(index);
+      return setSelected(null);
+    } else {
+      setSelected(index);
+      console.log(selected);
+      console.log(index);
+    }
+  };
+
+  //
+  // Creating a ref objext to reference the unput value
+  const inputRef = createRef();
   // ======================================================
   // const ref = useRef();
   // // // toggleExpand function to open and close each todo-list
@@ -116,11 +136,14 @@ function Lists({
       <form>
         <input
           value={todosInputText}
-          onChange={inputTextHandler}
-          // onChange={(e) => {
-          //   inputTextHandler(e);
-          //   toggle();
-          // }}
+          // onChange={inputTextHandler}
+          onInput={(e) => {
+            inputTextHandler(e);
+            toggle(index);
+            console.log(e.target.value == false);
+            console.log(inputRef);
+          }}
+          ref={inputRef}
           type="text"
           className="todo-input"
         />
@@ -131,6 +154,22 @@ function Lists({
         >
           <i className="fas fa-plus-square"></i>
         </button>
+        {/* ================================================================================== */}
+
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            toggle(index);
+          }}
+          className="open-collaps-button"
+        >
+          <i
+            className={selected === index ? "fa fa-sort-up" : "fa fa-sort-down"}
+          ></i>
+          {/* <i className="fa fa-sort-down"></i> */}
+        </button>
+
+        {/* ================================================================================== */}
         <div className="select">
           {/* call statusHandler() function on change */}
           <select onChange={statusHandler} name="todos" className="filter-todo">

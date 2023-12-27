@@ -8,22 +8,22 @@ function TodoLists({ todosList, setTodosList }) {
   // useState
   // ==================================
   // Hook for collapsing and expanding the todo-list
-  const [selected, setSelected] = useState(null);
+  // const [selected, setSelected] = useState(null);
   // console.log(selected);
   // ====================================================================
   // Functions and events
   // toggleExpand function to open and close each todo-list
-  const toggle = (index) => {
-    if (selected === index) {
-      console.log(selected);
-      console.log(index);
-      return setSelected(null);
-    } else {
-      setSelected(index);
-      console.log(selected);
-      console.log(index);
-    }
-  };
+  // const toggle = (index) => {
+  //   if (selected === index) {
+  //     console.log(selected);
+  //     console.log(index);
+  //     return setSelected(null);
+  //   } else {
+  //     setSelected(index);
+  //     console.log(selected);
+  //     console.log(index);
+  //   }
+  // };
 
   // ================================
   return (
@@ -35,7 +35,7 @@ function TodoLists({ todosList, setTodosList }) {
           <div className="z" key={listOfTodos.id}>
             <div className="list-heading">
               <h5>{listOfTodos.text}</h5>
-              <button
+              {/* <button
                 onClick={() => toggle(index)}
                 className="open-collaps-button"
               >
@@ -44,18 +44,17 @@ function TodoLists({ todosList, setTodosList }) {
                     selected === index ? "fa fa-sort-up" : "fa fa-sort-down"
                   }
                 ></i>
-                {/* <i className="fa fa-sort-down"></i> */}
-              </button>
+              </button> */}
             </div>
             {/* Rendering todo-lists */}
             <Lists
-              selected={selected}
+              // selected={selected}
               key={listOfTodos.id}
               todosList={todosList}
               setTodosList={setTodosList}
               listOfTodos={listOfTodos}
               index={index}
-              setSelected={setSelected}
+              // setSelected={setSelected}
             ></Lists>
           </div>
         ))}
