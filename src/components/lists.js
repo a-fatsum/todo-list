@@ -12,7 +12,8 @@ function Lists({
   setTodosList,
   todosList,
   index,
-  // selected,
+  selected,
+  setSelected,
 }) {
   // useState
   // input text for the list_todos
@@ -27,7 +28,7 @@ function Lists({
   // ==================================
   // ========================================================
   //  Hooks to use for the toggle()
-  const [selected, setSelected] = useState(null);
+  // const [selected, setSelected] = useState(null);
   // console.log(selected);
   // ====================================================================
   // ====================================================================
@@ -100,7 +101,7 @@ function Lists({
 
   //
   // Creating a ref objext to reference the unput value
-  const inputRef = createRef();
+  // const inputRef = createRef();
   // ======================================================
   // const ref = useRef();
   // // // toggleExpand function to open and close each todo-list
@@ -141,9 +142,8 @@ function Lists({
             inputTextHandler(e);
             toggle(index);
             console.log(e.target.value == false);
-            console.log(inputRef);
           }}
-          ref={inputRef}
+          // ref={inputRef}
           type="text"
           className="todo-input"
         />
