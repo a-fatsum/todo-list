@@ -1,10 +1,7 @@
-import React, { useState, useEffect, createRef } from "react";
-//
+import React, { useState, useEffect } from "react";
 // Import components
-//
 import Todo from "./todo";
 //
-
 // ===========================================================================
 function Lists({
   // text,
@@ -12,8 +9,9 @@ function Lists({
   setTodosList,
   todosList,
   index,
-  selected,
-  setSelected,
+  // uncomment selected, setSelected props if you want to activate accordion style list expand
+  // selected,
+  // setSelected,
 }) {
   // useState
   // input text for the list_todos
@@ -25,11 +23,11 @@ function Lists({
   const [status, setStatus] = useState("all");
   // Second hook [filteredTodos, SetFilteredTodos] is to store the filtered items based on their status being "complete" or "uncomplete"
   const [filteredTodos, setFilteredTodos] = useState([]);
-  // ==================================
-  // ========================================================
+  // ====================================================================
+  // ====================================================================
   //  Hooks to use for the toggle()
-  // const [selected, setSelected] = useState(null);
-  // console.log(selected);
+  // comment out [selected, setSelected] if you want to acctivate accordion
+  const [selected, setSelected] = useState(null);
   // ====================================================================
   // ====================================================================
   // useEffect
@@ -37,7 +35,7 @@ function Lists({
   useEffect(() => {
     filterHandler();
   }, [todos, status]);
-  //  =======================================
+  //  ==================================================================
   // Functions and events
   // filterHandler()  to filter out the "completed" and "uncompleted" items
   const filterHandler = () => {
@@ -89,8 +87,8 @@ function Lists({
   //
   const toggle = (index) => {
     if (selected === index) {
-      console.log(selected);
       console.log(index);
+      console.log(selected);
       return setSelected(null);
     } else {
       setSelected(index);
@@ -99,39 +97,18 @@ function Lists({
     }
   };
 
+  // Function to display input list when user starts typing
+  const displayListOnInput = function () {
+    if (todosInputText.length >= 0) {
+      return setSelected(index);
+    } else {
+      setSelected(null);
+    }
+  };
+
   //
-  // Creating a ref objext to reference the unput value
-  // const inputRef = createRef();
-  // ======================================================
-  // const ref = useRef();
-  // // // toggleExpand function to open and close each todo-list
-  // const ul = ref.current; // corresponding DOM node
-  // const toggle = () => {
-  //   if (selected === index) {
-  //     ul.className = "todo-list-items";
 
-  //     //
-  //     console.log(selected);
-  //     console.log(index);
-  //     console.log(ul.className);
-  //     // return ul.className;
-  //   } else if (selected !== index) {
-  //     ul.className = "hide";
-
-  //     // set selected to equal index somehow .............
-  //     console.log(selected);
-  //     console.log(index);
-  //     console.log(ul.className);
-  //     // return ul.className;
-  //   }
-  //   console.log(selected);
-  //   console.log(index);
-  //   console.log(ul.className);
-  //   // return ul.className;
-  //   // className={selected === index ? "todo-list-items" : "hide"}
-  // };
-
-  // =======================================================
+  // ==================================================================
   return (
     <div className="todo-container x">
       <form>
@@ -140,10 +117,8 @@ function Lists({
           // onChange={inputTextHandler}
           onInput={(e) => {
             inputTextHandler(e);
-            toggle(index);
-            console.log(e.target.value == false);
+            displayListOnInput();
           }}
-          // ref={inputRef}
           type="text"
           className="todo-input"
         />
@@ -154,7 +129,7 @@ function Lists({
         >
           <i className="fas fa-plus-square"></i>
         </button>
-        {/* ================================================================================== */}
+        {/* ========================================================= */}
 
         <button
           onClick={(e) => {
@@ -166,10 +141,10 @@ function Lists({
           <i
             className={selected === index ? "fa fa-sort-up" : "fa fa-sort-down"}
           ></i>
-          {/* <i className="fa fa-sort-down"></i> */}
         </button>
+        {/* <i className="fa fa-sort-down"></i> */}
 
-        {/* ================================================================================== */}
+        {/* ========================================================== */}
         <div className="select">
           {/* call statusHandler() function on change */}
           <select onChange={statusHandler} name="todos" className="filter-todo">
@@ -186,10 +161,7 @@ function Lists({
       {/* ============================================================ */}
       <div>
         {/* toggle class "hide" to hide and expand the todo-list-items */}
-        <ul
-          // ref={ref}
-          className={selected === index ? "todo-list-items" : "hide"}
-        >
+        <ul className={selected === index ? "todo-list-items" : "hide"}>
           {filteredTodos.map((todo) => (
             <Todo
               todo={todo}

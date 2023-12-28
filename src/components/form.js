@@ -1,27 +1,14 @@
 import React from "react";
-
-//
-//
-//
-//
-//
-//
-//
 //
 
 function Form({ setInputText, setTodosList, todosList, inputText }) {
-  //
-  //
-
   // ===================
   function inputTextHandler(e) {
-    // console.log(inputText);
     setInputText(e.target.value);
   }
   //
   const submitTodoHandler = (e) => {
     e.preventDefault();
-    // console.log(inputText);
     // Prevent empty inputs
     if (inputText) {
       setTodosList([

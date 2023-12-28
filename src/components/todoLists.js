@@ -8,23 +8,9 @@ function TodoLists({ todosList, setTodosList }) {
   // useState
   // ==================================
   // Hook for collapsing and expanding the todo-list
-  const [selected, setSelected] = useState(null);
-  console.log(selected);
-  // ====================================================================
-  // Functions and events
-  // toggleExpand function to open and close each todo-list
-  // const toggle = (index) => {
-  //   if (selected === index) {
-  //     console.log(selected);
-  //     console.log(index);
-  //     return setSelected(null);
-  //   } else {
-  //     setSelected(index);
-  //     console.log(selected);
-  //     console.log(index);
-  //   }
-  // };
-
+  // uncomment [selected, setSelected] hooks if you want to activate accordion style list expand
+  // const [selected, setSelected] = useState(null);
+  // =====================================================================
   // ================================
   return (
     <div className="todo-container">
@@ -35,26 +21,16 @@ function TodoLists({ todosList, setTodosList }) {
           <div className="z" key={listOfTodos.id}>
             <div className="list-heading">
               <h5>{listOfTodos.text}</h5>
-              {/* <button
-                onClick={() => toggle(index)}
-                className="open-collaps-button"
-              >
-                <i
-                  className={
-                    selected === index ? "fa fa-sort-up" : "fa fa-sort-down"
-                  }
-                ></i>
-              </button> */}
             </div>
             {/* Rendering todo-lists */}
             <Lists
-              selected={selected}
+              // selected={selected}
               key={listOfTodos.id}
               todosList={todosList}
               setTodosList={setTodosList}
               listOfTodos={listOfTodos}
               index={index}
-              setSelected={setSelected}
+              // setSelected={setSelected}
             ></Lists>
           </div>
         ))}
