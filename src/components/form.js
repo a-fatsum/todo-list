@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 //
+import TodoLists from "./todoLists";
+//
+function Form({
+  setInputText,
+  // setTodosList, todosList,
+  inputText,
+}) {
+  // use state
+  const [todosList, setTodosList] = useState([]);
 
-function Form({ setInputText, setTodosList, todosList, inputText }) {
   // ===================
   function inputTextHandler(e) {
     setInputText(e.target.value);
@@ -18,8 +26,6 @@ function Form({ setInputText, setTodosList, todosList, inputText }) {
       setInputText("");
     }
   };
-  //
-  //
   //
   return (
     <div>
@@ -39,6 +45,7 @@ function Form({ setInputText, setTodosList, todosList, inputText }) {
           <i className="fas fa-plus-square"></i>
         </button>
       </form>
+      <TodoLists todosList={todosList} setTodosList={setTodosList}></TodoLists>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Import components
 import Lists from "./lists";
@@ -11,7 +11,7 @@ function TodoLists({ todosList, setTodosList }) {
   // uncomment [selected, setSelected] hooks if you want to activate accordion style list expand
   // const [selected, setSelected] = useState(null);
   // =====================================================================
-  // ================================
+
   return (
     <div className="todo-container">
       <ul className=" y">

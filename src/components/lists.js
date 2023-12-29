@@ -31,10 +31,13 @@ function Lists({
   // ====================================================================
   // ====================================================================
   // useEffect
+  // useEffect(() => {
+  //   getLocalTodosList();
+  // }, []);
   // useEffect to run the function filterHandler() everytime we modify the status or make a todo entery
   useEffect(() => {
     filterHandler();
-  }, [todos, status]);
+  }, [todos]);
   //  ==================================================================
   // Functions and events
   // filterHandler()  to filter out the "completed" and "uncompleted" items
@@ -87,13 +90,9 @@ function Lists({
   //
   const toggle = (index) => {
     if (selected === index) {
-      console.log(index);
-      console.log(selected);
       return setSelected(null);
     } else {
       setSelected(index);
-      console.log(selected);
-      console.log(index);
     }
   };
 
@@ -105,8 +104,40 @@ function Lists({
       setSelected(null);
     }
   };
-
   //
+  // =====================================================================
+  // useEffect
+  // useEffect(() => {
+  //   saveLocalTodosList();
+  // }, []);
+  // ==============================
+
+  useEffect(() => {
+    if (localStorage.getItem("todosListLocalStorage") === null) {
+      localStorage.setItem("todosListLocalStorage", JSON.stringify([]));
+    } else {
+      localStorage.setItem("todosListLocalStorage", JSON.stringify(todosList));
+    }
+  }, [todosList]);
+
+  // save todosList to local storage
+  // const saveLocalTodosList =
+
+  // getLocalTodosList from Local Storage
+  // const getLocalTodosList =
+  // //
+  // run getLocalTodosList once when the app starts
+  useEffect(() => {
+    if (localStorage.getItem("todosListLocalStorage") === null) {
+      localStorage.setItem("todosListLocalStorage", JSON.stringify([]));
+    } else {
+      let todosListFromLocal = JSON.parse(
+        localStorage.getItem("todosListLocalStorage")
+      );
+      setTodosList(todosListFromLocal);
+    }
+  }, []);
+  // =====================================================================
 
   // ==================================================================
   return (
