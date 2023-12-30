@@ -18,7 +18,7 @@ function Lists({
   const [todosInputText, setTodosInputText] = useState("");
   // todos items
   const [todos, setTodos] = useState(() => {
-    const localValue = localStorage.getItem("ITEMS");
+    const localValue = localStorage.getItem("TODO-ITEMS");
     if (localValue == null) return [];
     return JSON.parse(localValue);
   });
@@ -31,7 +31,7 @@ function Lists({
   //
   // Set local storage items
   useEffect(() => {
-    localStorage.setItem("ITEMS", JSON.stringify(todos));
+    localStorage.setItem("TODO-ITEMS", JSON.stringify(todos));
   }, [todos]);
 
   // ====================================================================
