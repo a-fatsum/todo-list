@@ -17,13 +17,23 @@ function Lists({
   // input text for the list_todos
   const [todosInputText, setTodosInputText] = useState("");
   // todos items
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const localValue = localStorage.getItem("ITEMS");
+    if (localValue == null) return [];
+    return JSON.parse(localValue);
+  });
   //===================================
   // Use 2 hooks.. first one [status, setStatus] is to store all of our todos
   const [status, setStatus] = useState("all");
   // Second hook [filteredTodos, SetFilteredTodos] is to store the filtered items based on their status being "complete" or "uncomplete"
   const [filteredTodos, setFilteredTodos] = useState([]);
   // ====================================================================
+  //
+  // Set local storage items
+  useEffect(() => {
+    localStorage.setItem("ITEMS", JSON.stringify(todos));
+  }, [todos]);
+
   // ====================================================================
   //  Hooks to use for the toggle()
   // comment out [selected, setSelected] if you want to acctivate accordion
@@ -31,13 +41,11 @@ function Lists({
   // ====================================================================
   // ====================================================================
   // useEffect
-  // useEffect(() => {
-  //   getLocalTodosList();
-  // }, []);
+
   // useEffect to run the function filterHandler() everytime we modify the status or make a todo entery
   useEffect(() => {
     filterHandler();
-  }, [todos]);
+  }, [todos, status]);
   //  ==================================================================
   // Functions and events
   // filterHandler()  to filter out the "completed" and "uncompleted" items
@@ -105,39 +113,6 @@ function Lists({
     }
   };
   //
-  // =====================================================================
-  // useEffect
-  // useEffect(() => {
-  //   saveLocalTodosList();
-  // }, []);
-  // ==============================
-
-  useEffect(() => {
-    if (localStorage.getItem("todosListLocalStorage") === null) {
-      localStorage.setItem("todosListLocalStorage", JSON.stringify([]));
-    } else {
-      localStorage.setItem("todosListLocalStorage", JSON.stringify(todosList));
-    }
-  }, [todosList]);
-
-  // save todosList to local storage
-  // const saveLocalTodosList =
-
-  // getLocalTodosList from Local Storage
-  // const getLocalTodosList =
-  // //
-  // run getLocalTodosList once when the app starts
-  useEffect(() => {
-    if (localStorage.getItem("todosListLocalStorage") === null) {
-      localStorage.setItem("todosListLocalStorage", JSON.stringify([]));
-    } else {
-      let todosListFromLocal = JSON.parse(
-        localStorage.getItem("todosListLocalStorage")
-      );
-      setTodosList(todosListFromLocal);
-    }
-  }, []);
-  // =====================================================================
 
   // ==================================================================
   return (

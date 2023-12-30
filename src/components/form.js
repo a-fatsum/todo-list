@@ -8,7 +8,18 @@ function Form({
   inputText,
 }) {
   // use state
-  const [todosList, setTodosList] = useState([]);
+
+  // Localstorage
+  const [todosList, setTodosList] = useState(() => {
+    const localValue = localStorage.getItem("ITEMS");
+    if (localValue == null) return [];
+    return JSON.parse(localValue);
+  });
+  //
+  // Set local storage items
+  useEffect(() => {
+    localStorage.setItem("ITEMS", JSON.stringify(todosList));
+  }, [todosList]);
 
   // ===================
   function inputTextHandler(e) {
