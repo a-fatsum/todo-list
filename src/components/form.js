@@ -20,6 +20,16 @@ function Form({
   useEffect(() => {
     localStorage.setItem("ITEMS", JSON.stringify(todosList));
   }, [todosList]);
+  // ===================
+  const [todos, setTodos] = useState(() => {
+    const localValue = localStorage.getItem("TODO-ITEMS");
+    if (localValue == null) return [];
+    return JSON.parse(localValue);
+  });
+  // Set local storage items
+  useEffect(() => {
+    localStorage.setItem("TODO-ITEMS", JSON.stringify(todos));
+  }, [todos]);
 
   // ===================
   function inputTextHandler(e) {
@@ -56,7 +66,12 @@ function Form({
           <i className="fas fa-plus-square"></i>
         </button>
       </form>
-      <TodoLists todosList={todosList} setTodosList={setTodosList}></TodoLists>
+      <TodoLists
+        todos={todos}
+        setTodos={setTodos}
+        todosList={todosList}
+        setTodosList={setTodosList}
+      ></TodoLists>
     </div>
   );
 }

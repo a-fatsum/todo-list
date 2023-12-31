@@ -9,6 +9,8 @@ function Lists({
   setTodosList,
   todosList,
   index,
+  todos,
+  setTodos,
   // uncomment selected, setSelected props if you want to activate accordion style list expand
   // selected,
   // setSelected,
@@ -17,11 +19,11 @@ function Lists({
   // input text for the list_todos
   const [todosInputText, setTodosInputText] = useState("");
   // todos items
-  const [todos, setTodos] = useState(() => {
-    const localValue = localStorage.getItem("TODO-ITEMS");
-    if (localValue == null) return [];
-    return JSON.parse(localValue);
-  });
+  // const [todos, setTodos] = useState(() => {
+  //   const localValue = localStorage.getItem("TODO-ITEMS");
+  //   if (localValue == null) return [];
+  //   return JSON.parse(localValue);
+  // });
   //===================================
   // Use 2 hooks.. first one [status, setStatus] is to store all of our todos
   const [status, setStatus] = useState("all");
@@ -29,9 +31,9 @@ function Lists({
   const [filteredTodos, setFilteredTodos] = useState([]);
   // ====================================================================
   // Set local storage items
-  useEffect(() => {
-    localStorage.setItem("TODO-ITEMS", JSON.stringify(todos));
-  }, [todos]);
+  // useEffect(() => {
+  //   localStorage.setItem("TODO-ITEMS", JSON.stringify(todos));
+  // }, [todos]);
 
   // ====================================================================
   //  Hooks to use for the toggle()
