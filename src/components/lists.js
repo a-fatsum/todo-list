@@ -9,8 +9,12 @@ function Lists({
   setTodosList,
   todosList,
   index,
-  todos,
-  setTodos,
+  // status,
+  // setStatus,
+  // todos,
+  // setTodos,
+  // filteredTodos,
+  // setFilteredTodos,
   // uncomment selected, setSelected props if you want to activate accordion style list expand
   // selected,
   // setSelected,
@@ -18,28 +22,49 @@ function Lists({
   // useState
   // input text for the list_todos
   const [todosInputText, setTodosInputText] = useState("");
-  // todos items
-  // const [todos, setTodos] = useState(() => {
-  //   const localValue = localStorage.getItem("TODO-ITEMS");
-  //   if (localValue == null) return [];
-  //   return JSON.parse(localValue);
-  // });
+
   //===================================
   // Use 2 hooks.. first one [status, setStatus] is to store all of our todos
   const [status, setStatus] = useState("all");
   // Second hook [filteredTodos, SetFilteredTodos] is to store the filtered items based on their status being "complete" or "uncomplete"
-  const [filteredTodos, setFilteredTodos] = useState([]);
-  // ====================================================================
-  // Set local storage items
-  // useEffect(() => {
-  //   localStorage.setItem("TODO-ITEMS", JSON.stringify(todos));
-  // }, [todos]);
+  // const [filteredTodos, setFilteredTodos] = useState([]);
 
   // ====================================================================
   //  Hooks to use for the toggle()
   // comment out [selected, setSelected] if you want to acctivate accordion
   const [selected, setSelected] = useState(null);
   // ====================================================================
+  // todos items
+  const [todos, setTodos] = useState([]);
+  // filteredTodos
+  // const [filteredTodos, setFilteredTodos] = useState([]);
+
+  // ====================================================================
+  // ====================================================================
+  // ====================================================================
+  // ====================================================================
+
+  // // filteredTodos items
+  const [filteredTodos, setFilteredTodos] = useState([]);
+  // // Set local storage items
+  const x = () => {
+    const todosItemsValue = localStorage.getItem("TODO-ITEMS");
+    if (todosItemsValue == null) return [];
+    console.log(todosItemsValue);
+    return JSON.parse(todosItemsValue);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("TODO-ITEMS", JSON.stringify(filteredTodos));
+    x();
+    //
+  }, [todos]);
+  // ====================================================================
+  // ====================================================================
+  // ====================================================================
+  // ====================================================================
+  // ====================================================================
+
   // useEffect
   // useEffect to run the function filterHandler() everytime we modify the status or make a todo entery
   useEffect(() => {
@@ -47,7 +72,7 @@ function Lists({
   }, [todos, status]);
   //  ==================================================================
   // Functions and events
-  // filterHandler()  to filter out the "completed" and "uncompleted" items
+  // // filterHandler()  to filter out the "completed" and "uncompleted" items
   const filterHandler = () => {
     switch (status) {
       case "completed":
@@ -61,7 +86,7 @@ function Lists({
         break;
     }
   };
-  // statusHandler() to set the status of items "complete" or "incomplete"
+  // // statusHandler() to set the status of items "complete" or "incomplete"
   const statusHandler = (e) => {
     setStatus(e.target.value);
   };

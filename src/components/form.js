@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 //
-import TodoLists from "./todoLists";
+// import TodoLists from "./todoLists";
+//
+import Lists from "./lists";
 //
 function Form({
   setInputText,
@@ -21,15 +23,15 @@ function Form({
     localStorage.setItem("ITEMS", JSON.stringify(todosList));
   }, [todosList]);
   // ===================
-  const [todos, setTodos] = useState(() => {
-    const localValue = localStorage.getItem("TODO-ITEMS");
-    if (localValue == null) return [];
-    return JSON.parse(localValue);
-  });
-  // Set local storage items
-  useEffect(() => {
-    localStorage.setItem("TODO-ITEMS", JSON.stringify(todos));
-  }, [todos]);
+  // const [todos, setTodos] = useState(() => {
+  //   const localValue = localStorage.getItem("TODO-ITEMS");
+  //   if (localValue == null) return [];
+  //   return JSON.parse(localValue);
+  // });
+  // // Set local storage items
+  // useEffect(() => {
+  //   localStorage.setItem("TODO-ITEMS", JSON.stringify(todos));
+  // }, [todos]);
 
   // ===================
   function inputTextHandler(e) {
@@ -66,12 +68,34 @@ function Form({
           <i className="fas fa-plus-square"></i>
         </button>
       </form>
-      <TodoLists
-        todos={todos}
-        setTodos={setTodos}
-        todosList={todosList}
-        setTodosList={setTodosList}
-      ></TodoLists>
+      <div className="todo-container">
+        <ul className="todo-list">
+          {/* Pass in the index to use for opena and collapse the todo items  */}
+          {todosList.map((listOfTodos, index) => (
+            <Lists
+              // selected={selected}
+              key={listOfTodos.id}
+              todosList={todosList}
+              setTodosList={setTodosList}
+              listOfTodos={listOfTodos}
+              index={index}
+              // todos={todos}
+              // setTodos={setTodos}
+              // status={status}
+              // setStatus={setStatus}
+              // filteredTodos={filteredTodos}
+              // setFilteredTodos={setFilteredTodos}
+              // setSelected={setSelected}
+            ></Lists>
+          ))}
+        </ul>
+      </div>
+      {/* <Lists
+      // todos={todos}
+      // setTodos={setTodos}
+      // todosList={todosList}
+      // setTodosList={setTodosList}
+      ></Lists> */}
     </div>
   );
 }
