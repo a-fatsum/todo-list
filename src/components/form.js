@@ -42,7 +42,7 @@ function Form({
     <div>
       <form>
         <input
-          placeholder="List name"
+          placeholder="List Name"
           value={inputText}
           onChange={inputTextHandler}
           type="text"
@@ -50,7 +50,7 @@ function Form({
         />
         <button
           onClick={submitTodoHandler}
-          className="todo-button"
+          className="add-todo-button"
           type="submit"
         >
           <i className="fas fa-plus-square"></i>

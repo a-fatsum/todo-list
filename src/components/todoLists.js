@@ -14,25 +14,18 @@ function TodoLists({ todosList, setTodosList }) {
 
   return (
     <div className="todo-container">
-      <ul className=" y">
+      <ul className="todo-list">
         {/* Pass in the index to use for opena and collapse the todo items  */}
         {todosList.map((listOfTodos, index) => (
-          // // // key property below is temporary ->->->-> ?????????????????? change later to a proper key property
-          <div className="z" key={listOfTodos.id}>
-            <div className="list-heading">
-              <h5>{listOfTodos.text}</h5>
-            </div>
-            {/* Rendering todo-lists */}
-            <Lists
-              // selected={selected}
-              key={listOfTodos.id}
-              todosList={todosList}
-              setTodosList={setTodosList}
-              listOfTodos={listOfTodos}
-              index={index}
-              // setSelected={setSelected}
-            ></Lists>
-          </div>
+          <Lists
+            // selected={selected}
+            key={listOfTodos.id}
+            todosList={todosList}
+            setTodosList={setTodosList}
+            listOfTodos={listOfTodos}
+            index={index}
+            // setSelected={setSelected}
+          ></Lists>
         ))}
       </ul>
     </div>

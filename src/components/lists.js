@@ -28,7 +28,6 @@ function Lists({
   // Second hook [filteredTodos, SetFilteredTodos] is to store the filtered items based on their status being "complete" or "uncomplete"
   const [filteredTodos, setFilteredTodos] = useState([]);
   // ====================================================================
-  //
   // Set local storage items
   useEffect(() => {
     localStorage.setItem("TODO-ITEMS", JSON.stringify(todos));
@@ -39,9 +38,7 @@ function Lists({
   // comment out [selected, setSelected] if you want to acctivate accordion
   const [selected, setSelected] = useState(null);
   // ====================================================================
-  // ====================================================================
   // useEffect
-
   // useEffect to run the function filterHandler() everytime we modify the status or make a todo entery
   useEffect(() => {
     filterHandler();
@@ -92,7 +89,6 @@ function Lists({
       setTodosList(todosList.filter((el) => el.id !== listOfTodos.id));
     }
   };
-
   // Functions and events
   // toggleExpand function to open and close each todo-list
   //
@@ -113,56 +109,57 @@ function Lists({
     }
   };
   //
-
   // ==================================================================
   return (
-    <div className="todo-container x">
-      <form>
-        <input
-          value={todosInputText}
-          // onChange={inputTextHandler}
-          onInput={(e) => {
-            inputTextHandler(e);
-            displayListOnInput();
-          }}
-          type="text"
-          className="todo-input"
-        />
-        <button
-          onClick={submitTodoHandler}
-          className="todo-button"
-          type="submit"
-        >
-          <i className="fas fa-plus-square"></i>
-        </button>
-        {/* ========================================================= */}
-
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            toggle(index);
-          }}
-          className="open-collaps-button"
-        >
+    <div className="todos-list-container">
+      <form className="todos-list-form">
+        <div className="list-heading">
+          <h5>{listOfTodos.text}</h5>
+          <div>xx</div>
+        </div>
+        <div className="todos-list-form-inputs">
+          <input
+            value={todosInputText}
+            // onChange={inputTextHandler}
+            onInput={(e) => {
+              inputTextHandler(e);
+              displayListOnInput();
+            }}
+            type="text"
+            className="todo-input"
+          />
+          <button
+            onClick={submitTodoHandler}
+            className="add-todo-button"
+            type="submit"
+          >
+            <i className="fas fa-plus-square"></i>
+          </button>
           <i
+            onClick={(e) => {
+              e.preventDefault();
+              toggle(index);
+            }}
             className={selected === index ? "fa fa-sort-up" : "fa fa-sort-down"}
           ></i>
-        </button>
-        {/* <i className="fa fa-sort-down"></i> */}
-
-        {/* ========================================================== */}
-        <div className="select">
-          {/* call statusHandler() function on change */}
-          <select onChange={statusHandler} name="todos" className="filter-todo">
-            <option value="all">All</option>
-            <option value="completed">Completed</option>
-            <option value="uncompleted">Uncompleted</option>
-          </select>
+          {/* ========================================================== */}
+          <div className="select">
+            {/* call statusHandler() function on change */}
+            <select
+              onChange={statusHandler}
+              name="todos"
+              className="filter-todo"
+            >
+              <option value="all">All</option>
+              <option value="completed">Completed</option>
+              <option value="uncompleted">Uncompleted</option>
+            </select>
+          </div>
+          <button className="todo-list-trash-btn" onClick={deleteHandler}>
+            {" "}
+            <i className="fas fa-trash"></i>
+          </button>
         </div>
-        <button onClick={deleteHandler}>
-          {" "}
-          <i className="fas fa-trash"></i>
-        </button>
       </form>
       {/* ============================================================ */}
       <div>

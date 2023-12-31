@@ -31,36 +31,25 @@ form {
 }
 
 form input,
-form button,
-.open-collaps-button {
+form button {
   padding: 0.5rem;
   font-size: 2rem;
   border: none;
   background: white;
 }
 
-form button,
-.open-collaps-button {
+form button {
   color: #ff6f47;
   background: #f7fffe;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-form button:hover {
+form button:hover,
+.fa-sort-down:hover,
+.fa-sort-up:hover {
   background: #ff6f47;
   color: white;
-}
-
-.todo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /*  */
-  /* background-color: tomato; */
-  width: fit-content;
-  margin: auto;
-  /*  */
 }
 
 .todo-list-items {
@@ -70,8 +59,10 @@ form button:hover {
   /* background-color: olive; */
   display: flex;
   flex-direction: column;
+  position: relative;
+  /* bottom: 6rem; */
   /* gap: 3rem; */
-  margin: auto;
+  /* margin: auto; */
   min-width: 34.5rem;
   /* transition: ease-in-out 0.5s; */
 
@@ -87,6 +78,7 @@ form button:hover {
   justify-content: space-between;
   align-items: center;
   transition: all 1s ease;
+  border-radius: 5px;
 }
 
 .filter-todo {
@@ -111,6 +103,11 @@ form button:hover {
   background: rgb(81, 156, 121);
 }
 
+.trash-btn {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 .todo-item {
   padding: 0rem 0.5rem;
 }
@@ -128,6 +125,7 @@ form button:hover {
 .completed {
   text-decoration: line-through;
   opacity: 0.5;
+  color: rgb(30, 100, 30);
 }
 
 /*CUSTOM SELECTOR */
@@ -147,6 +145,7 @@ select {
   margin: 1rem;
   position: relative;
   overflow: hidden;
+  border-radius: 5px;
 }
 
 select {
@@ -154,8 +153,6 @@ select {
   font-family: "Poppins", sans-serif;
   cursor: pointer;
   width: 10rem;
-  /*  */
-  /* width: auto; */
 }
 
 /* Arrow */
@@ -177,7 +174,8 @@ select {
 } */
 
 /* ****************************************************************************************** */
-.x {
+
+.todos-list-container {
   background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
   /*  */
   box-shadow: 0px 0px 94px -52px rgba(0, 0, 0, 0.46);
@@ -186,67 +184,91 @@ select {
   /*  */
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  gap: 4rem;
+  /* width: fit-content; */
   padding: 1rem;
   border-radius: 5px;
-}
-
-.z {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.list-heading {
-  font-size: 2rem;
-  display: inline-flex;
-  gap: 2rem;
-  /* background-color: olive; */
-  min-height: fit-content;
-  /* height: 9rem; */
-  position: absolute;
-  /* left: 40%; */
   margin: auto;
+
+  /* min-height: fit-content; */
+  /*  */
+  /* background-color: tomato; */
 }
 
-.list-heading h5,
-.list-heading button {
-  /* background-color: tomato; */
+.todos-list-form {
+  /* background-color: purple; */
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: fit-content;
+  min-height: fit-content;
+  gap: 2rem;
+}
+.todos-list-form-inputs {
+  display: inline-flex;
+  /* background-color: blue; */
+  /* margin: auto; */
 }
 
+.todos-list-form-inputs input,
+.todos-list-form-inputs button {
+  height: fit-content;
+  margin: auto;
+}
+
+.add-todo-button {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.todo-list-trash-btn {
+  border-radius: 5px;
+}
+
+.list-heading {
+  /* background-color: yellow; */
+  font-size: 2rem;
+  display: inline-flex;
+  min-height: fit-content;
+}
+
+.list-heading h5 {
+  font-weight: lighter;
+  font-size: 2rem;
+}
 /* ************** */
-.y {
+.todo-list {
   /* background-color: yellowgreen; */
   display: flex;
   flex-direction: column;
   gap: 2rem;
   align-items: center;
   justify-content: center;
-  /* padding-left: 50%; */
 }
 /* ************* */
 
 .todo-input {
   max-width: 17.2rem;
   font-size: 2rem;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .fa-sort-down,
 .fa-sort-up {
   color: #ff6f47;
   font-size: 2rem;
-}
-
-.open-collaps-button {
-  background: none;
-  outline: none;
-  border: none;
   cursor: pointer;
-  /* width: 4rem; */
-  /* height: 4rem; */
-  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 3.3rem;
+  margin: auto;
+  text-align: center;
+  margin-left: 0.3rem;
+  border-radius: 5px;
 }
 
 .hide {
