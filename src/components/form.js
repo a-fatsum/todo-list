@@ -12,12 +12,21 @@ function Form({
   // use state
 
   // Localstorage
-  const [todosList, setTodosList] = useState(() => {
-    const localValue = localStorage.getItem("ITEMS");
-    if (localValue == null) return [];
-    return JSON.parse(localValue);
-  });
-  //
+  // const [todosList, setTodosList] = useState(() => {
+  //   const localValue = localStorage.getItem("ITEMS");
+  //   if (localValue == null) return [];
+  //   return JSON.parse(localValue);
+  // });
+  // ===================
+  const [todos, setTodos] = useState(
+    JSON.parse(localStorage.getItem("TODOS-ITEMS")) || []
+  );
+
+  // ====================
+  const [todosList, setTodosList] = useState(
+    JSON.parse(localStorage.getItem("ITEMS")) || []
+  );
+
   // Set local storage items
   useEffect(() => {
     localStorage.setItem("ITEMS", JSON.stringify(todosList));
@@ -28,10 +37,11 @@ function Form({
   //   if (localValue == null) return [];
   //   return JSON.parse(localValue);
   // });
-  // // Set local storage items
-  // useEffect(() => {
-  //   localStorage.setItem("TODO-ITEMS", JSON.stringify(todos));
-  // }, [todos]);
+
+  // const handleTodosChange = (updatedItems) => {
+  //   localStorage.setItem("ITEMS", JSON.stringify(updatedItems));
+  //   setFilteredTodos(updatedItems);
+  // };
 
   // ===================
   function inputTextHandler(e) {
@@ -79,8 +89,8 @@ function Form({
               setTodosList={setTodosList}
               listOfTodos={listOfTodos}
               index={index}
-              // todos={todos}
-              // setTodos={setTodos}
+              todos={todos}
+              setTodos={setTodos}
               // status={status}
               // setStatus={setStatus}
               // filteredTodos={filteredTodos}

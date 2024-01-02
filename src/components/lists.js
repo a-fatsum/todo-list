@@ -11,8 +11,8 @@ function Lists({
   index,
   // status,
   // setStatus,
-  // todos,
-  // setTodos,
+  todos,
+  setTodos,
   // filteredTodos,
   // setFilteredTodos,
   // uncomment selected, setSelected props if you want to activate accordion style list expand
@@ -35,30 +35,39 @@ function Lists({
   const [selected, setSelected] = useState(null);
   // ====================================================================
   // todos items
-  const [todos, setTodos] = useState([]);
+  // const [todos, setTodos] = useState(
+  //   JSON.parse(localStorage.getItem("TODOS-ITEMS")) || []
+  // );
   // filteredTodos
   // const [filteredTodos, setFilteredTodos] = useState([]);
-
   // ====================================================================
-  // ====================================================================
-  // ====================================================================
-  // ====================================================================
-
   // // filteredTodos items
+  // const [filteredTodos, setFilteredTodos] = useState(() => {
+  //   const itemsValue = localStorage.getItem("TODOS-ITEMS");
+  //   if (itemsValue == null) return [];
+  //   return JSON.parse(itemsValue);
+  // });
   const [filteredTodos, setFilteredTodos] = useState([]);
-  // // Set local storage items
-  const x = () => {
-    const todosItemsValue = localStorage.getItem("TODO-ITEMS");
-    if (todosItemsValue == null) return [];
-    console.log(todosItemsValue);
-    return JSON.parse(todosItemsValue);
-  };
 
-  useEffect(() => {
-    localStorage.setItem("TODO-ITEMS", JSON.stringify(filteredTodos));
-    x();
-    //
-  }, [todos]);
+  // // Set local storage items
+  // ====================================================================
+  // ====================================================================
+  // ====================================================================
+  //
+  // Localstorage
+  // const [todosList, setTodosList] = useState(() => {
+  //   const localValue = localStorage.getItem("ITEMS");
+  //   if (localValue == null) return [];
+  //   return JSON.parse(localValue);
+  // });
+  //
+  // Set local storage items
+  // localStorage.setItem("TODOS-ITEMS", JSON.stringify(filteredTodos));
+
+  // useEffect(() => {
+  //   localStorage.setItem("TODOS-ITEMS", JSON.stringify(filteredTodos));
+  //   console.log(localStorage.getItem("TODOS-ITEMS"));
+  // }, [filteredTodos]);
   // ====================================================================
   // ====================================================================
   // ====================================================================
@@ -136,6 +145,12 @@ function Lists({
     }
   };
   //
+
+  const handleTodosChange = (updatedItems) => {
+    localStorage.setItem("TODOS-ITEMS", JSON.stringify(updatedItems));
+    setTodos(updatedItems);
+  };
+
   // ==================================================================
   return (
     <div className="todos-list-container">
@@ -148,9 +163,10 @@ function Lists({
           <input
             value={todosInputText}
             // onChange={inputTextHandler}
-            onInput={(e) => {
+            onChange={(e) => {
               inputTextHandler(e);
               displayListOnInput();
+              handleTodosChange(todos);
             }}
             type="text"
             className="todo-input"
