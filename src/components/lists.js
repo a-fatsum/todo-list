@@ -11,8 +11,8 @@ function Lists({
   index,
   // status,
   // setStatus,
-  todos,
-  setTodos,
+  // todos,
+  // setTodos,
   // filteredTodos,
   // setFilteredTodos,
   // uncomment selected, setSelected props if you want to activate accordion style list expand
@@ -35,9 +35,7 @@ function Lists({
   const [selected, setSelected] = useState(null);
   // ====================================================================
   // todos items
-  // const [todos, setTodos] = useState(
-  //   JSON.parse(localStorage.getItem("TODOS-ITEMS")) || []
-  // );
+  const [todos, setTodos] = useState([]);
   // filteredTodos
   // const [filteredTodos, setFilteredTodos] = useState([]);
   // ====================================================================
@@ -47,7 +45,9 @@ function Lists({
   //   if (itemsValue == null) return [];
   //   return JSON.parse(itemsValue);
   // });
-  const [filteredTodos, setFilteredTodos] = useState([]);
+  const [filteredTodos, setFilteredTodos] = useState(
+    JSON.parse(localStorage.getItem("TODOS-ITEMS"))
+  );
 
   // // Set local storage items
   // ====================================================================
@@ -94,7 +94,13 @@ function Lists({
         setFilteredTodos(todos);
         break;
     }
+    localStorage.setItem("TODOS-ITEMS", JSON.stringify(filteredTodos));
   };
+  //
+
+  // JSON.parse(localStorage.getItem("TODOS-ITEMS"));
+  // JSON.parse(localStorage.getItem("TODOS-ITEMS"));
+
   // // statusHandler() to set the status of items "complete" or "incomplete"
   const statusHandler = (e) => {
     setStatus(e.target.value);
@@ -148,8 +154,12 @@ function Lists({
 
   const handleTodosChange = (updatedItems) => {
     localStorage.setItem("TODOS-ITEMS", JSON.stringify(updatedItems));
-    setTodos(updatedItems);
+    setFilteredTodos(updatedItems);
   };
+
+  useEffect(() => {
+    setFilteredTodos(JSON.parse(localStorage.getItem("TODOS-ITEMS")));
+  }, []);
 
   // ==================================================================
   return (
@@ -166,7 +176,8 @@ function Lists({
             onChange={(e) => {
               inputTextHandler(e);
               displayListOnInput();
-              handleTodosChange(todos);
+              // handleTodosChange(filteredTodos);
+              // filterHandler();
             }}
             type="text"
             className="todo-input"

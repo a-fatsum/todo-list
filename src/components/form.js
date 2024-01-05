@@ -18,9 +18,9 @@ function Form({
   //   return JSON.parse(localValue);
   // });
   // ===================
-  const [todos, setTodos] = useState(
-    JSON.parse(localStorage.getItem("TODOS-ITEMS")) || []
-  );
+  // const [todos, setTodos] = useState(
+  //     JSON.parse(localStorage.getItem("TODOS-ITEMS")) || []
+  // );
 
   // ====================
   const [todosList, setTodosList] = useState(
@@ -39,8 +39,8 @@ function Form({
   // });
 
   // const handleTodosChange = (updatedItems) => {
-  //   localStorage.setItem("ITEMS", JSON.stringify(updatedItems));
-  //   setFilteredTodos(updatedItems);
+  //   localStorage.setItem("TODOS-ITEMS", JSON.stringify(updatedItems));
+  //   setTodos(updatedItems);
   // };
 
   // ===================
@@ -89,8 +89,8 @@ function Form({
               setTodosList={setTodosList}
               listOfTodos={listOfTodos}
               index={index}
-              todos={todos}
-              setTodos={setTodos}
+              // todos={todos}
+              // setTodos={setTodos}
               // status={status}
               // setStatus={setStatus}
               // filteredTodos={filteredTodos}
