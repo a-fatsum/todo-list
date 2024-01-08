@@ -11,7 +11,7 @@ function App() {
 
   // ======================================
   // input text for the lists titles
-  const [inputText, setInputText] = useState("");
+  // const [inputText, setInputText] = useState("");
   //
   // const [todosList, setTodosList] = useState([]);
   //
@@ -21,10 +21,10 @@ function App() {
         <h2>What's on the list?</h2>
       </header>
       <Form
-        inputText={inputText}
-        setInputText={setInputText}
-        // setTodosList={setTodosList}
-        // todosList={todosList}
+      // inputText={inputText}
+      // setInputText={setInputText}
+      // setTodosList={setTodosList}
+      // todosList={todosList}
       ></Form>
 
       {/* <TodoLists todosList={todosList} setTodosList={setTodosList}></TodoLists> */}

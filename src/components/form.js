@@ -4,11 +4,13 @@ import React, { useState, useEffect } from "react";
 //
 import Lists from "./lists";
 //
-function Form({
-  setInputText,
-  // setTodosList, todosList,
-  inputText,
-}) {
+function Form(
+  {
+    // setInputText,
+    // setTodosList, todosList,
+    // inputText,
+  }
+) {
   // use state
 
   // Localstorage
@@ -21,6 +23,9 @@ function Form({
   // const [todos, setTodos] = useState(
   //     JSON.parse(localStorage.getItem("TODOS-ITEMS")) || []
   // );
+  // ====================
+
+  const [inputText, setInputText] = useState("");
 
   // ====================
   const [todosList, setTodosList] = useState(
@@ -57,8 +62,10 @@ function Form({
         { text: inputText, id: Math.random() * 1000 },
       ]);
       setInputText("");
+      console.log(inputText.length);
     }
   };
+  //
   //
   return (
     <div>
