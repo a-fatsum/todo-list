@@ -35,9 +35,7 @@ function Lists({
   const [selected, setSelected] = useState(null);
   // ====================================================================
   // todos items
-  const [todos, setTodos] = useState(
-    JSON.parse(localStorage.getItem("TODOS-ITEMS")) || []
-  );
+  const [todos, setTodos] = useState([]);
 
   // filteredTodos
   // const [filteredTodos, setFilteredTodos] = useState([]);
@@ -79,7 +77,7 @@ function Lists({
   // useEffect to run the function filterHandler() everytime we modify the status or make a todo entery
   useEffect(() => {
     filterHandler();
-    localStorage.setItem("TODOS-ITEMS", JSON.stringify(todos));
+    // setFilteredTodos(JSON.parse(localStorage.getItem("TODOS-ITEMS")));
   }, [todos, status]);
   //  ==================================================================
   // Functions and events
@@ -96,6 +94,9 @@ function Lists({
         setFilteredTodos(todos);
         break;
     }
+    // setFilteredTodos(JSON.parse(localStorage.getItem("TODOS-ITEMS")));
+
+    // localStorage.setItem("TODOS-ITEMS", JSON.stringify(filteredTodos));
   };
   //
 
@@ -155,12 +156,10 @@ function Lists({
 
   const handleTodosChange = (updatedItems) => {
     localStorage.setItem("TODOS-ITEMS", JSON.stringify(updatedItems));
+    // setFilteredTodos(JSON.parse(localStorage.getItem("TODOS-ITEMS")));
+
     setFilteredTodos(updatedItems);
   };
-
-  useEffect(() => {
-    setFilteredTodos(JSON.parse(localStorage.getItem("TODOS-ITEMS")));
-  }, []);
 
   // ==================================================================
   return (
