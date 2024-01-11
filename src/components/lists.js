@@ -38,7 +38,9 @@ function Lists({
   const [todos, setTodos] = useState([]);
 
   // filteredTodos
-  // const [filteredTodos, setFilteredTodos] = useState([]);
+  const [filteredTodos, setFilteredTodos] = useState(
+    JSON.parse(localStorage.getItem("TODOS-ITEMS")) || []
+  );
   // ====================================================================
   // // filteredTodos items
   // const [filteredTodos, setFilteredTodos] = useState(() => {
@@ -46,39 +48,10 @@ function Lists({
   //   if (itemsValue == null) return [];
   //   return JSON.parse(itemsValue);
   // });
-  const [filteredTodos, setFilteredTodos] = useState([]);
+  // const [filteredTodos, setFilteredTodos] = useState(
+  //   JSON.parse(localStorage.getItem("TODOS-ITEMS")) || []
+  // );
 
-  // // Set local storage items
-  // ====================================================================
-  // ====================================================================
-  // ====================================================================
-  //
-  // Localstorage
-  // const [todosList, setTodosList] = useState(() => {
-  //   const localValue = localStorage.getItem("ITEMS");
-  //   if (localValue == null) return [];
-  //   return JSON.parse(localValue);
-  // });
-  //
-  // Set local storage items
-  // localStorage.setItem("TODOS-ITEMS", JSON.stringify(filteredTodos));
-
-  // useEffect(() => {
-  //   localStorage.setItem("TODOS-ITEMS", JSON.stringify(filteredTodos));
-  //   console.log(localStorage.getItem("TODOS-ITEMS"));
-  // }, [filteredTodos]);
-  // ====================================================================
-  // ====================================================================
-  // ====================================================================
-  // ====================================================================
-  // ====================================================================
-
-  // useEffect
-  // useEffect to run the function filterHandler() everytime we modify the status or make a todo entery
-  useEffect(() => {
-    filterHandler();
-    // setFilteredTodos(JSON.parse(localStorage.getItem("TODOS-ITEMS")));
-  }, [todos, status]);
   //  ==================================================================
   // Functions and events
   // // filterHandler()  to filter out the "completed" and "uncompleted" items
@@ -95,11 +68,17 @@ function Lists({
         break;
     }
     // setFilteredTodos(JSON.parse(localStorage.getItem("TODOS-ITEMS")));
-
+    // console.log(filteredTodos);
     // localStorage.setItem("TODOS-ITEMS", JSON.stringify(filteredTodos));
   };
   //
-
+  // useEffect
+  // useEffect to run the function filterHandler() everytime we modify the status or make a todo entery
+  useEffect(() => {
+    filterHandler();
+    localStorage.setItem("TODOS-ITEMS", JSON.stringify(filteredTodos));
+    // setFilteredTodos(JSON.parse(localStorage.getItem("TODOS-ITEMS")));
+  }, [todos, status]);
   // JSON.parse(localStorage.getItem("TODOS-ITEMS"));
   // JSON.parse(localStorage.getItem("TODOS-ITEMS"));
 
@@ -116,12 +95,10 @@ function Lists({
   const submitTodoHandler = (e) => {
     e.preventDefault();
     //   prevent empty inputs from the user
-    if (todosInputText) {
-      setTodos([
-        ...todos,
-        { text: todosInputText, completed: false, id: Math.random() * 1000 },
-      ]);
-    }
+    setTodos([
+      ...todos,
+      { text: todosInputText, completed: false, id: Math.random() * 1000 },
+    ]);
     setTodosInputText("");
   };
   //
@@ -160,6 +137,20 @@ function Lists({
 
     setFilteredTodos(updatedItems);
   };
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+  //
+  //
+  //
+  //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+  //
 
   // ==================================================================
   return (
@@ -222,8 +213,8 @@ function Lists({
           {filteredTodos.map((todo) => (
             <Todo
               todo={todo}
-              todos={todos}
-              setTodos={setTodos}
+              filteredTodos={filteredTodos}
+              setFilteredTodos={setFilteredTodos}
               text={todo.text}
               key={todo.id}
             >

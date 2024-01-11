@@ -13,6 +13,10 @@ function Form(
 ) {
   // use state
 
+  // const [filteredTodos, setFilteredTodos] = useState(
+  //   JSON.parse(localStorage.getItem("TODOS-ITEMS")) || []
+  // );
+
   // Localstorage
   // const [todosList, setTodosList] = useState(() => {
   //   const localValue = localStorage.getItem("ITEMS");
@@ -66,6 +70,21 @@ function Form(
     }
   };
   //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+  //
+  //
+  //
+  //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+  //
+
   //
   return (
     <div>

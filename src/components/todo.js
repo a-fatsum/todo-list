@@ -7,19 +7,19 @@ import React from "react";
 //
 //
 
-function Todo({ text, todo, setTodos, todos }) {
+function Todo({ text, todo, setFilteredTodos, filteredTodos }) {
   // Functions and events
   //   deleteHandler() filters through the [todos] array and only keeps the items with the id that dooesn't match the selected todo item
   const deleteHandler = () => {
-    setTodos(todos.filter((el) => el.id !== todo.id));
+    setFilteredTodos(filteredTodos.filter((el) => el.id !== todo.id));
     //
   };
 
   // =======================
   // completeHandler() maps through the [todos] array and flips the "completed" status over
   const completeHandler = () => {
-    setTodos(
-      todos.map((item) => {
+    setFilteredTodos(
+      filteredTodos.map((item) => {
         if (item.id === todo.id) {
           return {
             ...item,
@@ -30,6 +30,21 @@ function Todo({ text, todo, setTodos, todos }) {
       })
     );
   };
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+  //
+  //
+  //
+  //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+  //
+
   return (
     <div className="todo">
       <li className={`todo-item ${todo.completed ? "completed" : ""}`}>
