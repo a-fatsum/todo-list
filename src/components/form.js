@@ -4,13 +4,12 @@ import React, { useState, useEffect } from "react";
 //
 import Lists from "./lists";
 //
-function Form(
-  {
-    // setInputText,
-    // setTodosList, todosList,
-    // inputText,
-  }
-) {
+function Form({
+  // setInputText,
+  // setTodosList, todosList,
+  // inputText,
+  dateStamp,
+}) {
   // use state
 
   // const [filteredTodos, setFilteredTodos] = useState(
@@ -51,7 +50,19 @@ function Form(
   //   localStorage.setItem("TODOS-ITEMS", JSON.stringify(updatedItems));
   //   setTodos(updatedItems);
   // };
+  // Date stamp handler
+  // date stamp
+  const dateStampHandler = () => {
+    const dd = String(dateStamp.getDate()).padStart(2, "0");
+    const mm = String(dateStamp.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyy = dateStamp.getFullYear();
 
+    const today = dd + "-" + mm + "-" + yyyy;
+    return today;
+  };
+  console.log(dateStamp);
+
+  //
   // ===================
   function inputTextHandler(e) {
     setInputText(e.target.value);
@@ -63,7 +74,12 @@ function Form(
     if (inputText) {
       setTodosList([
         ...todosList,
-        { text: inputText, id: Math.random() * 1000 },
+        {
+          text: inputText,
+          dateStamp: dateStampHandler(),
+
+          id: Math.random() * 1000,
+        },
       ]);
       setInputText("");
       console.log(inputText.length);
@@ -71,8 +87,7 @@ function Form(
   };
   //
   //
-  //
-  //
+
   //
   //
   //
@@ -115,6 +130,10 @@ function Form(
               setTodosList={setTodosList}
               listOfTodos={listOfTodos}
               index={index}
+              //
+              dateStamp={listOfTodos.dateStamp}
+
+              //
               // todos={todos}
               // setTodos={setTodos}
               // status={status}

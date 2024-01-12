@@ -231,12 +231,20 @@ select {
   font-size: 2rem;
   display: inline-flex;
   min-height: fit-content;
+  gap: 2rem;
+  align-items: center;
 }
 
 .list-heading h5 {
   font-weight: lighter;
   font-size: 2rem;
 }
+
+.list-heading h6 {
+  /* background-color: tomato; */
+  margin-top: 0.4rem;
+}
+
 /* ************** */
 .todo-list {
   /* background-color: yellowgreen; */

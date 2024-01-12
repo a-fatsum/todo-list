@@ -9,6 +9,7 @@ function Lists({
   setTodosList,
   todosList,
   index,
+  dateStamp,
   // status,
   // setStatus,
   // todos,
@@ -158,7 +159,7 @@ function Lists({
       <form className="todos-list-form">
         <div className="list-heading">
           <h5>{listOfTodos.text}</h5>
-          <div>xx</div>
+          <h6>{dateStamp}</h6>
         </div>
         <div className="todos-list-form-inputs">
           <input
