@@ -46,7 +46,8 @@ export function Lists({
               onChange={(e) => setTask(e.currentTarget.value)}
             />
             <button type="submit">
-              <span>Add Task</span>
+              {/* <span> */} <i className="fas fa-plus-square"></i>
+              {/* </span> */}
             </button>
           </form>
           <div className="select">
