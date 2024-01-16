@@ -29,8 +29,7 @@ export function Lists({
   const dueDate = new Date(list.dueDate);
   const formattedDate = dueDate.toLocaleDateString();
 
-  console.log(formattedDate);
-  // console.log(list.name, tasks);
+  // console.log(task);
 
   return (
     <div className="todos-list-container">

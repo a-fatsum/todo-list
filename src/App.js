@@ -6,26 +6,12 @@ import { Form } from "./components/Form"; // import TodoLists from "./components
 //
 
 function App() {
-  // ======================================
-  // input text for the lists titles
-  // const [inputText, setInputText] = useState("");
-  //
-  // const [todosList, setTodosList] = useState([]);
-  //
   return (
     <div className="App">
       <header>
         <h2>What's on the list?</h2>
       </header>
-      <Form
-
-      // inputText={inputText}
-      // setInputText={setInputText}
-      // setTodosList={setTodosList}
-      // todosList={todosList}
-      ></Form>
-
-      {/* <TodoLists todosList={todosList} setTodosList={setTodosList}></TodoLists> */}
+      <Form></Form>
     </div>
   );
 }

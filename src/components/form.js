@@ -61,7 +61,6 @@ export function Form({}) {
             status,
           };
         }
-
         return task;
       })
     );
