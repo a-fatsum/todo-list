@@ -26,8 +26,11 @@ export function Lists({
   };
 
   const filteredTasks = filterTasks();
+  const dueDate = new Date(list.dueDate);
+  const formattedDate = dueDate.toLocaleDateString();
 
-  console.log(list.name, tasks);
+  console.log(formattedDate);
+  // console.log(list.name, tasks);
 
   return (
     <div className="todos-list-container">
@@ -35,7 +38,12 @@ export function Lists({
         <div className="top">
           <b>{list.name}</b>
           <span>{list.date}</span>
-          <span>{list.dueDate}</span>
+          <span>
+            {dueDate.setHours(0, 0, 0, 0) === new Date().setHours(0, 0, 0, 0)
+              ? "Today"
+              : dueDate.toLocaleDateString()}
+          </span>
+          {/* <span>{formattedDate}</span> */}
         </div>
         <div className="list-actions">
           <form className="list-form" onSubmit={onSubmit}>

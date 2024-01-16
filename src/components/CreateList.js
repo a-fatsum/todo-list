@@ -34,13 +34,21 @@ export function CreateList({ onCreate }) {
         <div className="due-date-picker-container">
           <DatePicker
             className="due-date-picker"
-            value={dueDate}
+            value={
+              dueDate.setHours(0, 0, 0, 0) === new Date().setHours(0, 0, 0, 0)
+                ? "Due Date:  Today"
+                : "Due Date:  " + dueDate.toLocaleDateString()
+            }
             onChange={(value, e) => {
               setDueDate(value);
               console.log(dueDate);
             }}
-            placeholderText={"Due Date"}
+            // placeholderText={"Due Date"}
           ></DatePicker>
+          <div>
+            <i className="fa-calendar-check-background">o</i>
+            <i className="fa fa-calendar-check"></i>
+          </div>
         </div>
       </form>
     </div>
