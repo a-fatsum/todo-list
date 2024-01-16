@@ -148,6 +148,7 @@ select {
   overflow: hidden;
   border-radius: 5px;
   display: inline-flex;
+  width: 11rem;
 
   /* font-size: 1.5rem; */
   /* max-height: fit-content; */
@@ -269,12 +270,27 @@ option {
 /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
 .create-list-form {
-  /* background-color: tomato; */
-  display: inline-flex;
-}
+  background-color: tomato;
+  display: flex;
 
-.create-list-form button {
-  /* background-color: yellow; */
+  flex-direction: column;
+  gap: 1rem;
+  min-height: fit-content;
+  min-width: fit-content;
+}
+.due-date-picker-container {
+  /* display: block; */
+  /* position: absolute; */
+  /* bottom: 20; */
+  /* width: 100%; */
+}
+.due-date-picker {
+  background-color: olive;
+  border-radius: 5px;
+  text-align: center;
+}
+.create-list-form-button {
+  background-color: yellow;
   max-height: fit-content;
   font-size: 1.5rem;
   border-top-right-radius: 5px;
@@ -287,6 +303,7 @@ option {
   font-size: 1.5rem;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  text-align: center;
 }
 
 .todos-list-container {
@@ -331,9 +348,17 @@ option {
   font-size: 1.3rem;
   color: rgb(81, 156, 121);
 }
+
+/* Due date */
+.top span + span::before {
+  content: "List Due Date:";
+  margin-right: 0.5rem;
+  font-size: 1.3rem;
+  color: rgb(81, 156, 121);
+}
 .top span::before {
   content: "List Created on:";
-  margin-right: 1rem;
+  margin-right: 0.5rem;
   color: rgb(81, 156, 121);
   font-size: 1.3rem;
 }

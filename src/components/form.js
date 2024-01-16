@@ -9,7 +9,7 @@ export function Form({}) {
   const [tasks, setTasks] = useState(() => getItems().tasks);
   const [lists, setLists] = useState(() => getItems().lists);
 
-  const createList = (name) => {
+  const createList = (name, dueDate) => {
     const id = new Date().valueOf();
     const date = new Date().toLocaleDateString();
     setLists([
@@ -18,10 +18,10 @@ export function Form({}) {
         id,
         date,
         name,
+        dueDate,
       },
     ]);
   };
-
   const createTask = (text, listId) => {
     const id = new Date().valueOf();
     const date = new Date().toLocaleDateString();

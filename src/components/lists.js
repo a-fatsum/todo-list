@@ -34,8 +34,8 @@ export function Lists({
       <header className="list-header">
         <div className="top">
           <b>{list.name}</b>
-
           <span>{list.date}</span>
+          <span>{list.dueDate}</span>
         </div>
         <div className="list-actions">
           <form className="list-form" onSubmit={onSubmit}>

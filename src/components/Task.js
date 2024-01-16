@@ -1,4 +1,4 @@
-export function Task({ task, onDelete, onComplete }) {
+export function Task({ task, onDelete, onComplete, DatePicker }) {
   const status = task.status === "completed" ? "incomplete" : "completed";
 
   return (
