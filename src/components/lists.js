@@ -38,7 +38,7 @@ export function Lists({
           <b>{list.name}</b>
           <span>{list.date}</span>
           <span>
-            {dueDate.setHours(0, 0, 0, 0) === new Date().setHours(0, 0, 0, 0)
+            {dueDate.setHours(0, 0, 0, 0) <= new Date().setHours(0, 0, 0, 0)
               ? "Today"
               : dueDate.toLocaleDateString()}
           </span>

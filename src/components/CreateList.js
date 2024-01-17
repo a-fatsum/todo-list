@@ -35,7 +35,7 @@ export function CreateList({ onCreate }) {
           <DatePicker
             className="due-date-picker"
             value={
-              dueDate.setHours(0, 0, 0, 0) === new Date().setHours(0, 0, 0, 0)
+              dueDate.setHours(0, 0, 0, 0) <= new Date().setHours(0, 0, 0, 0)
                 ? "Due Date:  Today"
                 : "Due Date:  " + dueDate.toLocaleDateString()
             }

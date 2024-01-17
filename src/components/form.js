@@ -25,16 +25,18 @@ export function Form({}) {
   const createTask = (text, listId) => {
     const id = new Date().valueOf();
     const date = new Date().toLocaleDateString();
-    setTasks([
-      ...tasks,
-      {
-        id,
-        date,
-        listId,
-        text,
-        status: "incomplete",
-      },
-    ]);
+    if (text) {
+      setTasks([
+        ...tasks,
+        {
+          id,
+          date,
+          listId,
+          text,
+          status: "incomplete",
+        },
+      ]);
+    }
   };
 
   const listAction = (action, listId) => {
